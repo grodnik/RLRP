@@ -170,6 +170,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +236,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\ProjectManager\Index.cshtml" />
+    <Content Include="Views\ProjectManager\Create.cshtml" />
+    <Content Include="Views\ProjectManager\Edit.cshtml" />
+    <Content Include="Views\ProjectManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +256,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RLRP.Core\RLRP.Core.csproj">
+      <Project>{db7c5a8f-5e38-4391-bea0-c9c0903cce95}</Project>
+      <Name>RLRP.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RLRP.DataAccess.InMemory\RLRP.DataAccess.InMemory.csproj">
+      <Project>{44f71bdb-436f-4c53-a838-dbd9f36c0265}</Project>
+      <Name>RLRP.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RLRP.DataAccess.SQL\RLRP.DataAccess.SQL.csproj">
+      <Project>{5d8d5777-a444-4886-8d88-f16084dd5bdc}</Project>
+      <Name>RLRP.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RLRP.Services\RLRP.Services.csproj">
+      <Project>{2a168de3-ce16-485b-94e5-4b71ecc500c7}</Project>
+      <Name>RLRP.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
