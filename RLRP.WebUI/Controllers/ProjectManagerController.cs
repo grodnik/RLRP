@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RLRP.Core.Models;
+using RLRP.Core.ViewModels;
 using RLRP.DataAccess.InMemory;
 
 namespace RLRP.WebUI.Controllers
@@ -11,10 +12,12 @@ namespace RLRP.WebUI.Controllers
   public class ProjectManagerController : Controller
   {
     ProjectRepository context;
+    AreaRepository areas;
 
     public ProjectManagerController()
     {
       context = new ProjectRepository();
+      areas = new AreaRepository();
     }
         
     // GET: ProjectManager
@@ -27,8 +30,11 @@ namespace RLRP.WebUI.Controllers
     // CREATE
     public ActionResult Create()
     {
-      Project project = new Project();
-      return View(project);
+      ProjectManagerViewModel viewModel = new ProjectManagerViewModel();
+
+      viewModel.Project = new Project();
+      viewModel.Areas = areas.Collection();
+      return View(viewModel);
     }
 
     [HttpPost]
@@ -58,7 +64,11 @@ namespace RLRP.WebUI.Controllers
       }
       else
       {
-        return View(project);
+        ProjectManagerViewModel viewModel = new ProjectManagerViewModel();
+        viewModel.Project = project;
+        viewModel.Areas = areas.Collection();
+
+        return View(viewModel);
       }
     }
 
