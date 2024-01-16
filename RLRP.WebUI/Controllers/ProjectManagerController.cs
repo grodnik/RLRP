@@ -11,13 +11,13 @@ namespace RLRP.WebUI.Controllers
 {
   public class ProjectManagerController : Controller
   {
-    ProjectRepository context;
-    AreaRepository areas;
+    InMemoryRepository<Project> context;
+    InMemoryRepository<Area> areas;
 
     public ProjectManagerController()
     {
-      context = new ProjectRepository();
-      areas = new AreaRepository();
+      context = new InMemoryRepository<Project>();
+      areas = new InMemoryRepository<Area>();
     }
         
     // GET: ProjectManager

@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace RLRP.Core.Models
 {
-  public class Project
+  public class Project : BaseEntity
   {
-
-    public string Id { get; set; }
 
     [StringLength(40)]
     [DisplayName("Project Title")]
@@ -25,11 +23,6 @@ namespace RLRP.Core.Models
     public decimal BudgetLife { get; set; }
     public string OddEven { get; set; }
     public string Notes { get; set; }
-
-    public Project()
-    {
-      this.Id = Guid.NewGuid().ToString();
-    }
 
   }
 }

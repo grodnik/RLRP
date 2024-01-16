@@ -10,11 +10,11 @@ namespace RLRP.WebUI.Controllers
 {
   public class AreaManagerController : Controller
   {
-    AreaRepository context;
+    InMemoryRepository<Area> context;
 
     public AreaManagerController()
     {
-      context = new AreaRepository();
+      context = new InMemoryRepository<Area>(); 
     }
 
     // GET: AreaManager
