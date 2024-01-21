@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RLRP.Core.Contracts;
 using RLRP.Core.Models;
 using RLRP.DataAccess.InMemory;
 
@@ -10,11 +11,11 @@ namespace RLRP.WebUI.Controllers
 {
   public class AreaManagerController : Controller
   {
-    InMemoryRepository<Area> context;
+   IRepository<Area> context;
 
-    public AreaManagerController()
+    public AreaManagerController(IRepository<Area> areaContext)
     {
-      context = new InMemoryRepository<Area>(); 
+      context = areaContext; 
     }
 
     // GET: AreaManager

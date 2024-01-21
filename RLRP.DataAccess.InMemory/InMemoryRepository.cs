@@ -1,4 +1,5 @@
-﻿using RLRP.Core.Models;
+﻿using RLRP.Core.Contracts;
+using RLRP.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace RLRP.DataAccess.InMemory
 {
-  public class InMemoryRepository<T> where T : BaseEntity 
+  public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
   {
     ObjectCache cache = MemoryCache.Default;
     List<T> items;
-    string ClassName;
+    string className;
 
     public InMemoryRepository()
     {
-      ClassName = typeof(T).Name;
-      items = cache[ClassName] as List<T>;
+      className = typeof(T).Name;
+      items = cache[className] as List<T>;
       if (items == null)
       {
         items = new List<T>();
@@ -26,7 +27,7 @@ namespace RLRP.DataAccess.InMemory
 
     public void Commit()
     {
-      cache[ClassName] = items;
+      cache[className] = items;
     }
 
     public void Insert(T t)
@@ -44,7 +45,7 @@ namespace RLRP.DataAccess.InMemory
       }
       else
       {
-        throw new Exception(ClassName + " Not Found");
+        throw new Exception(className + " Not Found");
       }
     }
 
@@ -57,7 +58,7 @@ namespace RLRP.DataAccess.InMemory
       }
       else
       {
-        throw new Exception(ClassName + " Not Found");
+        throw new Exception(className + " Not Found");
       }
 
     }
@@ -69,7 +70,7 @@ namespace RLRP.DataAccess.InMemory
 
     public void Delete(string Id)
     {
-      T tToDelete= items.Find(i => i.Id == Id);
+      T tToDelete = items.Find(i => i.Id == Id);
 
       if (tToDelete != null)
       {
@@ -77,7 +78,7 @@ namespace RLRP.DataAccess.InMemory
       }
       else
       {
-        throw new Exception(ClassName + " Not Found");
+        throw new Exception(className + " Not Found");
       }
     }
 

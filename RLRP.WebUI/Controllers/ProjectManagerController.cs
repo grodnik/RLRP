@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RLRP.Core.Contracts;
 using RLRP.Core.Models;
 using RLRP.Core.ViewModels;
 using RLRP.DataAccess.InMemory;
@@ -11,13 +12,13 @@ namespace RLRP.WebUI.Controllers
 {
   public class ProjectManagerController : Controller
   {
-    InMemoryRepository<Project> context;
-    InMemoryRepository<Area> areas;
+    IRepository<Project> context;
+    IRepository<Area> areas;
 
-    public ProjectManagerController()
+    public ProjectManagerController(IRepository<Project> projectContext, IRepository<Area> areaContext)
     {
-      context = new InMemoryRepository<Project>();
-      areas = new InMemoryRepository<Area>();
+      context = projectContext;
+      areas = areaContext;
     }
         
     // GET: ProjectManager
