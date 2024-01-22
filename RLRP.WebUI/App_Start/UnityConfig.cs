@@ -1,6 +1,7 @@
 using RLRP.Core.Contracts;
 using RLRP.Core.Models;
 using RLRP.DataAccess.InMemory;
+using RLRP.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -46,8 +47,8 @@ namespace RLRP.WebUI
       // TODO: Register your type's mappings here.
       // container.RegisterType<IProductRepository, ProductRepository>();
 
-      container.RegisterType<IRepository<Project>, InMemoryRepository<Project>>();
-      container.RegisterType<IRepository<Area>, InMemoryRepository<Area>>();
+      container.RegisterType<IRepository<Project>, SQLRepository<Project>>();
+      container.RegisterType<IRepository<Area>, SQLRepository<Area>>();
 
     }
     }
